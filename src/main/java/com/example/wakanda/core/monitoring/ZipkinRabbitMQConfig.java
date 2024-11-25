@@ -1,4 +1,4 @@
 package com.example.wakanda.core.monitoring;
 
-public class SleuthConfig {
+public class ZipkinRabbitMQConfig {
 }
