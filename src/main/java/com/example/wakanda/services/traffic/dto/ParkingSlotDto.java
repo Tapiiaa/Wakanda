@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrafficLightDto {
+public class ParkingSlotDto {
     private Long id;
-    private String interseccion;
+    private String ubicacionPlaza;
     private String estado;
-    private int duracionEstadoSegundos;
-    private int flujoVehicular;
-    private int nivelCongestion;
 }
