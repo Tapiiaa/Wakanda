@@ -1,5 +1,6 @@
 package com.example.wakanda.services.traffic.controller;
 
+import com.example.wakanda.services.traffic.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,13 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.wakanda.services.traffic.service.TrafficService;
-import com.example.wakanda.services.traffic.dto.ParkingSlotDto;
-import com.example.wakanda.services.traffic.dto.PublicTransportRouteDto;
-import com.example.wakanda.services.traffic.dto.TrafficDataManagerDto;
-import com.example.wakanda.services.traffic.dto.TrafficLightDto;
-import com.example.wakanda.services.traffic.dto.TrafficSensorDataDto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/traffic")
@@ -31,10 +28,18 @@ public class TrafficController {
     @GetMapping("/all")
     public ResponseEntity<TrafficDataManagerDto> getAllTrafficData() {
         // Se obtienen los datos de los diferentes tipos a través del servicio unificado
-        List<ParkingSlotDto> parkingSlots = trafficService.getAllParkingSlots();
-        List<PublicTransportRouteDto> publicTransportRoutes = trafficService.getAllPublicTransportRoutes();
-        List<TrafficLightDto> trafficLights = trafficService.getAllTrafficLights();
-        List<TrafficSensorDataDto> trafficSensorData = trafficService.getAllSensorData();
+        List<ParkingSlotDto> parkingSlots = trafficService.getAllParkingSlots().stream()
+                .map(ParkingSlotDto::fromModel)
+                .collect(Collectors.toList());
+        List<PublicTransportRouteDto> publicTransportRoutes = trafficService.getAllPublicTransportRoutes().stream()
+                .map(PublicTransportRouteDto::fromModel)
+                .collect(Collectors.toList());
+        List<TrafficLightDto> trafficLights = trafficService.getAllTrafficLights().stream()
+                .map(TrafficLightDto::fromModel)
+                .collect(Collectors.toList());
+        List<TrafficSensorDataDto> trafficSensorData = trafficService.getAllSensorData().stream()
+                .map(TrafficSensorDataDto::fromModel)
+                .collect(Collectors.toList());
 
         // Envolvemos los datos en un DTO genérico para la respuesta
         TrafficDataManagerDto response = new TrafficDataManagerDto();
@@ -49,7 +54,12 @@ public class TrafficController {
     // Endpoint para procesar los archivos CSV
     @PostMapping("/process-csv")
     public ResponseEntity<String> processCsvData(@RequestParam("file") MultipartFile file) {
-        trafficService.processCsv(file, "trafficLights");
-        return ResponseEntity.ok("CSV data processed successfully!");
+        try {
+            // Se procesa el archivo CSV
+            trafficService.processCsv(file, "trafficLights");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error procesando los datos del CSV: " + e.getMessage());
+        }
+        return ResponseEntity.ok("Datos del CSV procesados con éxito!");
     }
 }

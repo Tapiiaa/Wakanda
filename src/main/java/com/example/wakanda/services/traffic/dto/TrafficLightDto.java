@@ -1,5 +1,6 @@
 package com.example.wakanda.services.traffic.dto;
 
+import com.example.wakanda.services.traffic.model.TrafficLight;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,8 @@ public class TrafficLightDto {
     private int duracionEstadoSegundos;
     private int flujoVehicular;
     private int nivelCongestion;
+
+    public static TrafficLightDto fromModel(TrafficLight trafficLight) {
+        return new TrafficLightDto(trafficLight.getId(), trafficLight.getInterseccion(), trafficLight.getEstado(), trafficLight.getDuracionEstadoSegundos(), trafficLight.getFlujoVehicular(), trafficLight.getNivelCongestion());
+    }
 }
