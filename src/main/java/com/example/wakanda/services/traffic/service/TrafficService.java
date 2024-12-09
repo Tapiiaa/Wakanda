@@ -58,8 +58,9 @@ public class TrafficService {
         return trafficLightRepository.findAll();
     }
 
-    public void saveTrafficLights(List<TrafficLight> trafficLights) {
+    public List<TrafficLight> saveTrafficLights(List<TrafficLight> trafficLights) {
         trafficLightRepository.saveAll(trafficLights);
+        return trafficLights;
     }
 
     // Métodos para gestionar Traffic Sensor Data
@@ -91,7 +92,7 @@ public class TrafficService {
                 savePublicTransportRoutes(routes);
                 break;
             default:
-                throw new IllegalArgumentException("Invalid CSV type");
+                throw new IllegalArgumentException("Tipo de CSV no soportado: " + type);
         }
     }
 }
