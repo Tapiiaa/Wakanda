@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface TelemedicineSessionRepository extends JpaRepository<TelemedicineSession, Long> {
     List<TelemedicineSession> findByDoctorId(Long doctorId);
-    List<TelemedicineSession> findByPatientIdAndDateBetween(Long patientId, LocalDateTime start, LocalDateTime end);
+    List<TelemedicineSession> findByPatientIdAndSessionDateBetween(Long patientId, LocalDateTime start, LocalDateTime end);
 }

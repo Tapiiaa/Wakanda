@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -77,13 +79,14 @@ class TrafficServiceTest {
     }
 
     @Test
-    void testProcessCsv() {
+    void testProcessCsv() throws Exception {
         String csv = "ID,Interseccion,Estado,DuracionEstadoSegundos,FlujoVehicular,NivelCongestion\n" +
                 "1,Interseccion 1,Estado 1,10,100,Nivel 1\n" +
                 "2,Interseccion 2,Estado 2,20,200,Nivel 2\n" +
                 "3,Interseccion 3,Estado 3,30,300,Nivel 3";
 
-        trafficService.processCsv(csv, "trafficLights");
+        MultipartFile file = new MockMultipartFile("file", "trafficLights.csv", "text/csv", csv.getBytes());
+        trafficService.processCsv(file, "trafficLights");
 
         assertEquals(3, trafficService.getAllTrafficLights().size());
     }
