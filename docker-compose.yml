@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - my-network
+
+  wakanda-server:
+    image: wakanda-server
+    container_name: wakanda-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
