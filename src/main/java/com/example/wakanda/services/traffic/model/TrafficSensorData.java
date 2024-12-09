@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Getter
-@Setter
+
 @Entity
-@NoArgsConstructor
+@Data
 public class TrafficSensorData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +20,4 @@ public class TrafficSensorData {
     private int accidentesReportados;
     private String nivelCongestion;
     
-
-	public TrafficSensorData(Long id, String ubicacion, int vehiculosHora, double velocidadPromedio,
-			int accidentesReportados, String nivelCongestion) {
-		super();
-		this.id = id;
-		this.ubicacion = ubicacion;
-		this.vehiculosHora = vehiculosHora;
-		this.velocidadPromedio = velocidadPromedio;
-		this.accidentesReportados = accidentesReportados;
-		this.nivelCongestion = nivelCongestion;
-	}
 }

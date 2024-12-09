@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
+@Data
 public class ParkingSlot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,36 +12,6 @@ public class ParkingSlot {
     private String ubicacionPlaza;
     private String estado; 
     
-	public ParkingSlot() {}
-	
-	public ParkingSlot(String ubicacionPlaza, String estado) {
-		this.ubicacionPlaza = ubicacionPlaza;
-		this.estado = estado;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUbicacionPlaza() {
-		return ubicacionPlaza;
-	}
-
-	public void setUbicacionPlaza(String ubicacionPlaza) {
-		this.ubicacionPlaza = ubicacionPlaza;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
 	
 	
 }
