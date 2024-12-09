@@ -3,11 +3,14 @@ package com.example.wakanda.services.traffic.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Getter
 @Setter
+@Entity
+@NoArgsConstructor
 public class TrafficSensorData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +21,7 @@ public class TrafficSensorData {
     private int accidentesReportados;
     private String nivelCongestion;
     
-	public TrafficSensorData() {}
-	
+
 	public TrafficSensorData(Long id, String ubicacion, int vehiculosHora, double velocidadPromedio,
 			int accidentesReportados, String nivelCongestion) {
 		super();
