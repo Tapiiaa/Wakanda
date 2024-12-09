@@ -14,7 +14,7 @@ public class TrafficLightDto {
     private String estado;
     private int duracionEstadoSegundos;
     private int flujoVehicular;
-    private int nivelCongestion;
+    private String nivelCongestion;
 
     public static TrafficLightDto fromModel(TrafficLight trafficLight) {
         return new TrafficLightDto(trafficLight.getId(), trafficLight.getInterseccion(), trafficLight.getEstado(), trafficLight.getDuracionEstadoSegundos(), trafficLight.getFlujoVehicular(), trafficLight.getNivelCongestion());

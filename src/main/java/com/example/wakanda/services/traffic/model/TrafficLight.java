@@ -15,14 +15,14 @@ public class TrafficLight {
     private String estado;
     private int duracionEstadoSegundos;
     private int flujoVehicular;
-    private int nivelCongestion;
+    private String nivelCongestion;
 
     // Constructor vacío (necesario para JPA)
     public TrafficLight() {}
 
  
     public TrafficLight(String interseccion, String estado, int duracionEstadoSegundos,
-                        int flujoVehicular, int nivelCongestion) {
+                        int flujoVehicular, String nivelCongestion) {
         this.interseccion = interseccion;
         this.estado = estado;
         this.duracionEstadoSegundos = duracionEstadoSegundos;

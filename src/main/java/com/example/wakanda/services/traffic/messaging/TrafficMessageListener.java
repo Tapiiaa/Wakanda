@@ -8,7 +8,6 @@ public class TrafficMessageListener {
 
     @RabbitListener(queues = "${traffic.queue.name}")
     public void receiveMessage(String message) {
-        System.out.println("Received message from trafficQueue: " + message);
-        // Puedes procesar el mensaje recibido aquí.
+        System.out.println("Mensaje recibido de la cola de trafico: " + message);
     }
 }

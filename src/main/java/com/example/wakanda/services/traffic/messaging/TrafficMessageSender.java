@@ -21,6 +21,6 @@ public class TrafficMessageSender {
 
     public void sendMessage(String message) {
         rabbitTemplate.convertAndSend(exchange, routingKey, message);
-        System.out.println("Message sent to " + exchange + " with routing key " + routingKey + ": " + message);
+        System.out.println("Mensaje enviado a " + exchange + " con la ruta " + routingKey + ": " + message);
     }
 }

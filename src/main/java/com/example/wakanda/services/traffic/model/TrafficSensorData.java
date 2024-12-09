@@ -16,12 +16,12 @@ public class TrafficSensorData {
     private int vehiculosHora;
     private double velocidadPromedio;
     private int accidentesReportados;
-    private int nivelCongestion;
+    private String nivelCongestion;
     
 	public TrafficSensorData() {}
 	
 	public TrafficSensorData(Long id, String ubicacion, int vehiculosHora, double velocidadPromedio,
-			int accidentesReportados, int nivelCongestion) {
+			int accidentesReportados, String nivelCongestion) {
 		super();
 		this.id = id;
 		this.ubicacion = ubicacion;
