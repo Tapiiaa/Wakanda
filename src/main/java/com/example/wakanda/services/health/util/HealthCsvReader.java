@@ -2,6 +2,7 @@ package com.example.wakanda.services.health.util;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.wakanda.services.health.model.HealthMonitor;
+import com.example.wakanda.services.health.model.TelemedicineSession;
 @Component
 public class HealthCsvReader {
 
@@ -26,6 +28,7 @@ public class HealthCsvReader {
             for (CSVRecord csvRecord : csvParser) {
                 HealthMonitor healthMonitor = new HealthMonitor();
 
+                // Settea los valores del csv a los atributos del objeto healthMonitor
                 healthMonitor.setId(Long.valueOf(csvRecord.get("ID")));
                 healthMonitor.setNumeroSerie(csvRecord.get("NumeroSerie"));
                 healthMonitor.setEstado(csvRecord.get("Estado"));
@@ -34,5 +37,27 @@ public class HealthCsvReader {
             }
         }
         return healthMonitors;
+    }
+
+    public List<TelemedicineSession> readTelemedicineSessionCsv(MultipartFile file) throws Exception {
+      List<TelemedicineSession> telemedicineSessions = new ArrayList<>();
+
+      try (Reader reader = new InputStreamReader(file.getInputStream())) {
+        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
+            .withHeader("ID", "PacienteID", "DoctorID", "FechaSesion")
+            .withIgnoreHeaderCase().withTrim());
+
+        for (CSVRecord csvRecord : csvParser) {
+            TelemedicineSession telemedicineSession = new TelemedicineSession();
+
+            telemedicineSession.setId(Long.valueOf(csvRecord.get("ID")));
+            telemedicineSession.setPatientId(Long.valueOf(csvRecord.get("PacienteID")));
+            telemedicineSession.setDoctorId(Long.valueOf(csvRecord.get("DoctorID")));
+            telemedicineSession.setSessionDate(LocalDateTime.parse(csvRecord.get("FechaSesion")));
+
+            telemedicineSessions.add(telemedicineSession);
+        }
+      }
+      return telemedicineSessions;
     }
 }

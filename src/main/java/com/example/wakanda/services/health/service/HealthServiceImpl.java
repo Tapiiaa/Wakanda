@@ -34,7 +34,7 @@ public class HealthServiceImpl implements HealthService {
     public void updateHealthMonitorStatus(Long id, String status) {
         executorService.submit(() -> {
             HealthMonitor monitor = getHealthMonitorById(id);
-            monitor.setStatus(status);
+            monitor.setEstado(status);
             healthMonitorRepository.save(monitor);
         });
     }
