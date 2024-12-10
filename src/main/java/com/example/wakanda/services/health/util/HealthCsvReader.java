@@ -26,7 +26,7 @@ public class HealthCsvReader {
             for (CSVRecord csvRecord : csvParser) {
                 HealthMonitor healthMonitor = new HealthMonitor();
 
-                healthMonitor.setId(Long.parseLong(csvRecord.get("ID")));
+                healthMonitor.setId(Long.valueOf(csvRecord.get("ID")));
                 healthMonitor.setNumeroSerie(csvRecord.get("NumeroSerie"));
                 healthMonitor.setEstado(csvRecord.get("Estado"));
 
