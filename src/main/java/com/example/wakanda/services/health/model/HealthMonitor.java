@@ -18,11 +18,12 @@ public class HealthMonitor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String serialNumber;
-    private String status;
+    private String numeroSerie;
+    private String estado;
 
-    public HealthMonitor(String serialNumber, String status) {
-        this.serialNumber = serialNumber;
-        this.status = status;
+    public HealthMonitor(String numeroSerie, String estado) {
+        this.numeroSerie = numeroSerie;
+        this.estado = estado;
     }
 }
+
