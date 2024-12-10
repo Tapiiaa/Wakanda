@@ -27,7 +27,7 @@ public class HealthServiceImpl implements HealthService {
     @Override
     public HealthMonitor getHealthMonitorById(Long id) {
         return healthMonitorRepository.findById(id)
-                .orElseThrow(() -> new HealthMonitorNotFoundException("Health Monitor not found with id: " + id));
+                .orElseThrow(() -> new HealthMonitorNotFoundException("No se ha encontrado el monitor de salud con el id: " + id));
     }
 
     @Override
