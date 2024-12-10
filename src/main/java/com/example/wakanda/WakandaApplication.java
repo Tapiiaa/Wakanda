@@ -11,5 +11,4 @@ public class WakandaApplication {
     public static void main(String[] args) {
         SpringApplication.run(WakandaApplication.class, args);
     }
-
 }
