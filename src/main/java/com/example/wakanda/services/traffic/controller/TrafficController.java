@@ -54,12 +54,18 @@ public class TrafficController {
     // Endpoint para procesar los archivos CSV
     @PostMapping("/process-csv")
     public ResponseEntity<String> processCsvData(@RequestParam("file") MultipartFile file) {
+        // Validación: verificar si el archivo está vacío
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("El archivo CSV está vacío. Por favor, suba un archivo válido.");
+        }
+    
         try {
             // Se procesa el archivo CSV
             trafficService.processCsv(file, "trafficLights");
         } catch (Exception e) {
+            // Se podría agregar un log aquí para mayor trazabilidad
             return ResponseEntity.badRequest().body("Error procesando los datos del CSV: " + e.getMessage());
         }
-        return ResponseEntity.ok("Datos del CSV procesados con éxito!");
+        return ResponseEntity.ok("Datos del archivo CSV '" + file.getOriginalFilename() + "' procesados con éxito!");
     }
 }
