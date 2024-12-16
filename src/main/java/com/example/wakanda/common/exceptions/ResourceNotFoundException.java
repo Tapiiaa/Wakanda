@@ -1,4 +1,8 @@
 package com.example.wakanda.common.exceptions;
 
-public class ResourceNotFoundException {
+@SuppressWarnings("serial")
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
 }
