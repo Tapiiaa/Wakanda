@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: traffic-service
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: myuser
+    password: mypassword
+
+  eureka:
+    client:
+      register-with-eureka: true
+      fetch-registry: true
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    security:
+      enabled: false
+    endpoint:
+      health:
+        show-details: always
+    endpoint:
+      metrics:
+        enabled: true
+
+traffic:
+  queue:
+    name: trafficQueue
+  exchange:
+    name: trafficExchange
+  routing:
+    key: trafficKey
+
+server:
+  port: 8081  # Puedes elegir el puerto que necesites
+
+logging:
+  level:
+    org.springframework: INFO
+    com.example.wakanda: DEBUG

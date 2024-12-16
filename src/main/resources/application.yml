@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: Wakanda
+
+  security:
+    user:
+      name: admin
+      password: admin
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: myuser
+    password: mypassword
+
+  main:
+    allow-bean-definition-overriding: true
+
+  eureka:
+    client:
+      register-with-eureka: false
+      fetch-registry: false
+    server:
+      enable-self-preservation: false
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    security:
+      enabled: false
+    endpoint:
+      health:
+        show-details: always
+
+traffic:
+  queue:
+    name: trafficQueue
+  exchange:
+    name: trafficExchange
+  routing:
+    key: trafficKey
+
+server:
+  port: 8761

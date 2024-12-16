@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: health-service
+
+  eureka:
+    client:
+      register-with-eureka: true
+      fetch-registry: true
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    security:
+      enabled: false
+    endpoint:
+      health:
+        show-details: always
+      metrics:
+        enabled: true
+
+server:
+  port: 8082  # Puerto específico para el servicio de Health
+
+logging:
+  level:
+    org.springframework: INFO
+    com.example.wakanda: DEBUG
