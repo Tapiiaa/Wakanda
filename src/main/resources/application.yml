@@ -34,6 +34,13 @@ spring:
       health:
         show-details: always
 
+		cloud:
+		    config:
+		      server:
+		        git:
+		          uri: https://github.com/your-org/your-config-repo
+		          searchPaths: '{application}'
+		          clone-on-start: true
 traffic:
   queue:
     name: trafficQueue
