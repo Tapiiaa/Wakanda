@@ -1,6 +1,0 @@
-ID,Ubicacion,Estado,DuracionEstadoSegundos,UsoActual,NivelCriticidad
-1,Radiología,Operativo,3600,85,Moderado
-2,Laboratorio,Mantenimiento,1800,0,Alto
-3,Urgencias,Operativo,7200,60,Moderado
-4,UCI,Fuera de servicio,300,0,Alto
-5,Quirófano,Operativo,5400,90,Bajo

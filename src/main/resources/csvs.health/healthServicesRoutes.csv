@@ -1,6 +1,0 @@
-ID_Servicio,NombreServicio,EstadoActual,TiempoLlegada,DesvíosActivos,UltimaActualizacion,SiguienteDestino
-A1,Ambulancia Unidad 1,En camino,5 minutos,Obras en ruta,2024-12-16 11:55:56,Hospital X
-A2,Ambulancia Unidad 2,Disponible,Disponible,Ninguno,2024-12-16 11:55:56,Base Y
-A3,Unidad de Emergencias,Fuera de servicio,N/A,N/A,2024-12-16 11:55:56,N/A
-A4,Helicóptero Médico,En camino,10 minutos,Condiciones climáticas,2024-12-16 11:55:56,Hospital Z
-A5,Ambulancia Unidad 3,Disponible,Disponible,Ninguno,2024-12-16 11:55:56,Base Y
