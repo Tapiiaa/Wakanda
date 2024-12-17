@@ -2,7 +2,9 @@ package com.example.wakanda.services.health.service;
 
 import com.example.wakanda.services.health.exception.HealthMonitorNotFoundException;
 import com.example.wakanda.services.health.model.HealthMonitor;
+import com.example.wakanda.services.health.model.TelemedicineSession;
 import com.example.wakanda.services.health.repository.HealthMonitorRepository;
+import com.example.wakanda.services.health.repository.TelemedicineSessionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +14,12 @@ import java.util.concurrent.ExecutorService;
 public class HealthServiceImpl implements HealthService {
 
     private final HealthMonitorRepository healthMonitorRepository;
+    private final TelemedicineSessionRepository telemedicineSessionRepository;
     private final ExecutorService executorService;
 
-    public HealthServiceImpl(HealthMonitorRepository healthMonitorRepository, ExecutorService executorService) {
+    public HealthServiceImpl(HealthMonitorRepository healthMonitorRepository, TelemedicineSessionRepository telemedicineSessionRepository, ExecutorService executorService) {
         this.healthMonitorRepository = healthMonitorRepository;
+        this.telemedicineSessionRepository = telemedicineSessionRepository;
         this.executorService = executorService;
     }
 
@@ -37,5 +41,22 @@ public class HealthServiceImpl implements HealthService {
             monitor.setEstado(status);
             healthMonitorRepository.save(monitor);
         });
+    }
+
+    // Metodos para TelemedicineSession
+    @Override
+    public List<TelemedicineSession> getAllTelemedicineSessions() {
+        return telemedicineSessionRepository.findAll();
+    }
+
+    @Override
+    public TelemedicineSession getTelemedicineSessionById(Long id) {
+        return telemedicineSessionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se ha encontrado la sesión de telemedicina con el id: " + id));
+        }
+
+    @Override
+    public void createTelemedicineSession(TelemedicineSession telemedicineSession) {
+        telemedicineSessionRepository.save(telemedicineSession);
     }
 }
