@@ -7,6 +7,4 @@ import java.util.List;
 import java.util.Optional;
 
 public interface HealthMonitorRepository extends JpaRepository<HealthMonitor, Long> {
-    Optional<HealthMonitor> findBySerialNumber(String serialNumber);
-    List<HealthMonitor> findAllByStatus(String status);
 }
