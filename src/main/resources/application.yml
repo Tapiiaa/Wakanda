@@ -4,11 +4,6 @@ spring:
   profiles:
     active: health-service
 
-  security:
-    user:
-      name: admin
-      password: admin
-
   rabbitmq:
     host: rabbitmq
     port: 5672
@@ -23,9 +18,17 @@ spring:
     client:
       register-with-eureka: false
       fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
     server:
       enable-self-preservation: false
 
+  security:
+    user:
+      name: admin
+      password: admin
+    basic:
+      enabled: false
   management:
     endpoints:
       web:
@@ -37,22 +40,6 @@ spring:
       health:
         show-details: always
 
-  cloud:
-    discovery:
-      enabled: true
-    config:
-      server:
-        git:
-          uri: https://github.com/your-org/your-config-repo
-          searchPaths: '{application}'
-          clone-on-start: true
-
-    eureka:
-      client:
-        serviceUrl:
-          defaultZone: http://localhost:8761/eureka/
-        registerWithEureka: true
-        fetchRegistry: true
 
 traffic:
   queue:

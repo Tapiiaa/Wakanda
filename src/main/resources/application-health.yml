@@ -8,6 +8,8 @@ spring:
         defaultZone: http://eureka-server:8761/eureka/
       register-with-eureka: true
       fetch-registry: true
+    instance:
+      preferIpAdress: true
 
   rabbitmq:
     host: rabbitmq

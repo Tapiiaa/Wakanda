@@ -23,6 +23,13 @@ services:
     networks:
       - my-network
 
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8761/actuator/health" ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
   health-service:
     build:
       context: .
@@ -38,8 +45,8 @@ services:
       SPRING_RABBITMQ_PASSWORD: mypassword
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
     depends_on:
-      - rabbitmq
-      - eureka-server
+      eureka-server:
+        condition: service_healthy
     networks:
       - my-network
 
