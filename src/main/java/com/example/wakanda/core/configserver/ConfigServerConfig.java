@@ -4,5 +4,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableConfigServer  // Activa el Config Server de Spring Cloud
-public class ConfigServerConfig {}
+@EnableConfigServer
+public class ConfigServerConfig {
+    // No additional code required; @EnableConfigServer activates the Config Server functionality.
+}

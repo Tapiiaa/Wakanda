@@ -22,8 +22,8 @@ public class HealthCsvReader {
 
         try (Reader reader = new InputStreamReader(file.getInputStream())) {
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
-                .withHeader("ID", "NumeroSerie", "Estado")
-                .withIgnoreHeaderCase().withTrim());
+                    .withHeader("ID", "NumeroSerie", "Estado")
+                    .withIgnoreHeaderCase().withTrim());
 
             for (CSVRecord csvRecord : csvParser) {
                 HealthMonitor healthMonitor = new HealthMonitor();
@@ -40,24 +40,44 @@ public class HealthCsvReader {
     }
 
     public List<TelemedicineSession> readTelemedicineSessionCsv(MultipartFile file) throws Exception {
-      List<TelemedicineSession> telemedicineSessions = new ArrayList<>();
+        List<TelemedicineSession> telemedicineSessions = new ArrayList<>();
 
-      try (Reader reader = new InputStreamReader(file.getInputStream())) {
-        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
-            .withHeader("ID", "PacienteID", "DoctorID", "FechaSesion")
-            .withIgnoreHeaderCase().withTrim());
+        try (Reader reader = new InputStreamReader(file.getInputStream())) {
+            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
+                    .withHeader("ID", "PacienteID", "DoctorID", "FechaSesion")
+                    .withIgnoreHeaderCase().withTrim());
 
-        for (CSVRecord csvRecord : csvParser) {
-            TelemedicineSession telemedicineSession = new TelemedicineSession();
+            for (CSVRecord csvRecord : csvParser) {
+                TelemedicineSession telemedicineSession = new TelemedicineSession();
 
-            telemedicineSession.setId(Long.valueOf(csvRecord.get("ID")));
-            telemedicineSession.setPatientId(Long.valueOf(csvRecord.get("PacienteID")));
-            telemedicineSession.setDoctorId(Long.valueOf(csvRecord.get("DoctorID")));
-            telemedicineSession.setSessionDate(LocalDateTime.parse(csvRecord.get("FechaSesion")));
+                telemedicineSession.setId(Long.valueOf(csvRecord.get("ID")));
+                telemedicineSession.setPatientId(Long.valueOf(csvRecord.get("PacienteID")));
+                telemedicineSession.setDoctorId(Long.valueOf(csvRecord.get("DoctorID")));
+                telemedicineSession.setSessionDate(LocalDateTime.parse(csvRecord.get("FechaSesion")));
 
-            telemedicineSessions.add(telemedicineSession);
+                telemedicineSessions.add(telemedicineSession);
+            }
         }
-      }
-      return telemedicineSessions;
+        return telemedicineSessions;
+    }
+
+    public List<HealthMonitor> readTrafficSensorsCsv(MultipartFile file) throws Exception {
+        List<HealthMonitor> healthMonitors = new ArrayList<>();
+
+        try (Reader reader = new InputStreamReader(file.getInputStream())) {
+            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
+                    .withHeader("ID", "Ubicacion", "VehiculosHora", "VelocidadPromedio", "AccidentesReportados", "NivelCongestion")
+                    .withIgnoreHeaderCase().withTrim());
+
+            for (CSVRecord csvRecord : csvParser) {
+                HealthMonitor healthMonitor = new HealthMonitor();
+                healthMonitor.setId(Long.valueOf(csvRecord.get("ID")));
+                healthMonitor.setNumeroSerie(csvRecord.get("Ubicacion")); // Usando Ubicacion como ejemplo de adaptación
+                healthMonitor.setEstado(csvRecord.get("NivelCongestion")); // NivelCongestion mapeado como Estado
+
+                healthMonitors.add(healthMonitor);
+            }
+        }
+        return healthMonitors;
     }
 }
