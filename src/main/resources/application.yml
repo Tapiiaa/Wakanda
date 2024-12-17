@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Wakanda
+    name: eureka-server
   profiles:
     active: health-service
 
