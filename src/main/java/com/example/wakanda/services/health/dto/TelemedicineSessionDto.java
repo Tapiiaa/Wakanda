@@ -1,9 +1,7 @@
 package com.example.wakanda.services.health.dto;
 
 import com.example.wakanda.services.health.model.TelemedicineSession;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor

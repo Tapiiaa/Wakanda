@@ -4,24 +4,28 @@ spring:
 
   eureka:
     client:
+      service-url:
+        defaultZone: http://eureka-server:8761/eureka/
       register-with-eureka: true
       fetch-registry: true
 
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
-    security:
-      enabled: false
-    endpoint:
-      health:
-        show-details: always
-      metrics:
-        enabled: true
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: myuser
+    password: mypassword
 
 server:
   port: 8082  # Puerto específico para el servicio de Health
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 
 logging:
   level:

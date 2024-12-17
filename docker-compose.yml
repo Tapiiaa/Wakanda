@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -13,19 +11,35 @@ services:
     networks:
       - my-network
 
-  wakanda-server:
+  eureka-server:
     build:
       context: .
-    container_name: wakanda-server
+      dockerfile: Dockerfile
+    container_name: eureka-server
     ports:
       - "8761:8761"
     environment:
+      SPRING_PROFILES_ACTIVE: eureka
+    networks:
+      - my-network
+
+  health-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: health-service
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: health
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
       SPRING_RABBITMQ_USERNAME: myuser
       SPRING_RABBITMQ_PASSWORD: mypassword
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
     depends_on:
       - rabbitmq
+      - eureka-server
     networks:
       - my-network
 

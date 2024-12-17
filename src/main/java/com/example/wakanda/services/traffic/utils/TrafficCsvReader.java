@@ -4,6 +4,8 @@ import com.example.wakanda.services.traffic.model.ParkingSlot;
 import com.example.wakanda.services.traffic.model.PublicTransportRoute;
 import com.example.wakanda.services.traffic.model.TrafficLight;
 import com.example.wakanda.services.traffic.model.TrafficSensorData;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
