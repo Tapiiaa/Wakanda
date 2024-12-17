@@ -35,12 +35,13 @@ public class HealthServiceImpl implements HealthService {
     }
 
     @Override
-    public void updateHealthMonitorStatus(Long id, String status) {
+    public HealthMonitor updateHealthMonitorStatus(Long id, String status) {
         executorService.submit(() -> {
             HealthMonitor monitor = getHealthMonitorById(id);
             monitor.setEstado(status);
             healthMonitorRepository.save(monitor);
         });
+        return null;
     }
 
     // Metodos para TelemedicineSession
@@ -56,7 +57,8 @@ public class HealthServiceImpl implements HealthService {
         }
 
     @Override
-    public void createTelemedicineSession(TelemedicineSession telemedicineSession) {
+    public TelemedicineSession createTelemedicineSession(TelemedicineSession telemedicineSession) {
         telemedicineSessionRepository.save(telemedicineSession);
+        return telemedicineSession;
     }
 }
