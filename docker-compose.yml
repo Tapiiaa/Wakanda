@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -13,10 +11,10 @@ services:
     networks:
       - my-network
 
-  wakanda-server:
+  eureka-server:
     build:
       context: .
-    container_name: wakanda-server
+    container_name: eureka-server
     ports:
       - "8761:8761"
     environment:

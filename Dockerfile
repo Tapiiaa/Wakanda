@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia tu archivo JAR al contenedor
-COPY target/Wakanda-0.0.1-SNAPSHOT.jar app.jar
+COPY target/eureka-server-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto 8761 para Eureka Server
 EXPOSE 8761
