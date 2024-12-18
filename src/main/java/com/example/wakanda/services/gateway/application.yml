@@ -1,0 +1,17 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    root: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: traffic-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/traffic/**

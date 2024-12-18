@@ -68,4 +68,11 @@ public class TrafficController {
         }
         return ResponseEntity.ok("Datos del archivo CSV '" + file.getOriginalFilename() + "' procesados con éxito!");
     }
+
+    public String getSemaphoreStatus(){
+        //Ajustar tiempo de los semaforos
+        return "OK";
+    }
+
+
 }
