@@ -6,10 +6,8 @@ Realizado por: Pablo Edu García, Patrik Paul Sirbu, Pedro Alonso Tapia Lobo.
 Sistema modular para la gestión eficiente de servicios tecnológicos en la ciudad inteligente de Wakanda, basado en microservicios con Spring Boot y Spring Cloud.
 
 ## Características principales
-- **Gestín Inteligente del Tráfico:** Semáforos y sensores optimizan el flujo vehicular.
-- **Energía Sostenible:** Red eléctrica y alumbrado público inteligentes.
-- **Gestín del Agua:** Sistemas de riego y monitoreo de redes.
-- **Seguridad y Vigilancia:** Cámaras y drones inteligentes.
+- **Gestiónn Inteligente del Tráfico:** Semáforos y sensores optimizan el flujo vehicular.
+- **Salud y bienestar** Obtención de datos de pacientes y de circulación de servicios sanitarios
 - **Monitoreo:** Prometheus y Grafana para supervisión de servicios.
 
 ## Configuración rápida
