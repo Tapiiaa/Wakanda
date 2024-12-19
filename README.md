@@ -1,7 +1,6 @@
-
+# Sistema de Gestión de Servicios en Wakanda
 Realizado por: Pablo Edu García, Patrik Paul Sirbu, Pedro Alonso Tapia Lobo.
 #### Enlace al repositorio: https://github.com/Tapiiaa/Wakanda
-# Sistema de Gestión de Servicios en Wakanda
 
 ## Descripción
 Sistema modular para la gestión eficiente de servicios tecnológicos en la ciudad inteligente de Wakanda, basado en microservicios con Spring Boot y Spring Cloud.
@@ -37,7 +36,3 @@ Sistema modular para la gestión eficiente de servicios tecnológicos en la ciud
 - Spring Boot y Spring Cloud.
 - Hystrix, Ribbon, Eureka.
 - Prometheus, Grafana, Zipkin.
-
-## Licencia
-MIT
-
