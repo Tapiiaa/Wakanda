@@ -15,3 +15,5 @@ public interface HealthService {
     TelemedicineSession getTelemedicineSessionById(Long id);
     TelemedicineSession createTelemedicineSession(TelemedicineSession telemedicineSession);
 }
+
+
